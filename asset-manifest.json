@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/Kapsule-Cloudinary/kapsule/client/static/js/main.90e04deb.js",
-    "static/media/bg.jpg": "/Kapsule-Cloudinary/kapsule/client/static/media/bg.7aac0747133a208780b5.jpg",
-    "static/media/profile.png": "/Kapsule-Cloudinary/kapsule/client/static/media/profile.5faf09a7795d28bf5a2b.png",
-    "index.html": "/Kapsule-Cloudinary/kapsule/client/index.html",
-    "main.90e04deb.js.map": "/Kapsule-Cloudinary/kapsule/client/static/js/main.90e04deb.js.map"
+    "main.js": "/home/static/js/main.e4414bba.js",
+    "static/media/bg.jpg": "/home/static/media/bg.7aac0747133a208780b5.jpg",
+    "static/media/profile.png": "/home/static/media/profile.5faf09a7795d28bf5a2b.png",
+    "index.html": "/home/index.html",
+    "main.e4414bba.js.map": "/home/static/js/main.e4414bba.js.map"
   },
   "entrypoints": [
-    "static/js/main.90e04deb.js"
+    "static/js/main.e4414bba.js"
   ]
 }
