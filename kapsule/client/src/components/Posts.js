@@ -23,7 +23,7 @@ import ImageOptions from './ImageOptions';
 import { Favorite } from '@mui/icons-material';
 import { useMutation } from '../hooks/useMutation';
 import axiosClient from '../config/axios';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const ErrorText = ({ children, ...props }) => (
   <Text fontSize='lg' color='red.300' {...props}>
@@ -61,7 +61,9 @@ const Posts = ({ setUpdate, retrieveState }) => {
     .sort((a, b) => b.date - a.date);
 
   const handleLikes = async (id, revIndex) => {
-    images[images.length - revIndex - 1].likes += 1;
+    images.map((img) =>
+      img.id === sortedImages[revIndex].id ? (img.likes += 1) : null
+    );
     const likesInfo = { username: user.username, id: id };
     await likes(likesInfo);
   };

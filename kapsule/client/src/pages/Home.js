@@ -1,6 +1,6 @@
-import React from "react";
-import Background from "../assets/bg.jpg";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Background from '../assets/bg.jpg';
+import { useNavigate } from 'react-router-dom';
 
 import {
   Button,
@@ -11,15 +11,15 @@ import {
   Text,
   Highlight,
   useColorMode,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <Stack minH={"100vh"} direction={{ base: "row", md: "row" }} spacing={0}>
-      <Flex display={{ base: "none", md: "flex" }} ml={10}>
+    <Stack minH={'100vh'} direction={{ base: 'row', md: 'row' }} spacing={0}>
+      <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
         <Desktop />
       </Flex>
-      <Flex display={{ base: "flex", md: "none" }}>
+      <Flex display={{ base: 'flex', md: 'none' }}>
         <Mobile />
       </Flex>
     </Stack>
@@ -32,55 +32,55 @@ const Desktop = () => {
   const { colorMode } = useColorMode();
   const navigate = useNavigate();
 
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem('user');
 
   const handleGetStarted = () => {
     if (!user) {
-      navigate("/login");
+      navigate('/login');
       navigate(0);
     } else {
-      navigate("/profile")
+      navigate('/profile');
       navigate(0);
     }
   };
 
   return (
     <Flex>
-      <Flex m={0} p={8} flex={1} align={"center"} justify={"center"}>
-        <Stack spacing={6} w={"full"} maxW={"lg"}>
-          <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+      <Flex m={0} p={8} flex={1} align={'center'} justify={'center'}>
+        <Stack spacing={6} w={'full'} maxW={'lg'}>
+          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
             <Highlight
-              query={"Unleash"}
+              query={'Unleash'}
               styles={{
-                fontFamily: "Bungee shade",
+                fontFamily: 'Bungee shade',
                 color:
-                  colorMode === "light"
-                    ? "var(--chakra-colors-gray-600)"
-                    : "var(--chakra-colors-white)",
+                  colorMode === 'light'
+                    ? 'var(--chakra-colors-gray-600)'
+                    : 'var(--chakra-colors-white)',
               }}
             >
               Unleash
             </Highlight>
-            <Text color={"blue.400"}>your creativity!</Text>
+            <Text color={'blue.400'}>your creativity!</Text>
           </Heading>
 
           <Text
-            fontSize={{ base: "sm", md: "md", lg: "lg" }}
-            color={"gray.400"}
-            fontWeight={"bold"}
+            fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+            color={'gray.400'}
+            fontWeight={'bold'}
           >
-            <Highlight query={["Kapsule"]} styles={{ color: "blue.300" }}>
+            <Highlight query={['Kapsule']} styles={{ color: 'blue.300' }}>
               Create your own Kapsule to show off your own artwork.
             </Highlight>
           </Text>
 
-          <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             <Button
-              rounded={"full"}
-              bg={"blue.400"}
-              color={"white"}
+              rounded={'full'}
+              bg={'blue.400'}
+              color={'white'}
               _hover={{
-                bg: "blue.500",
+                bg: 'blue.500',
               }}
               onClick={handleGetStarted}
             >
@@ -90,59 +90,71 @@ const Desktop = () => {
         </Stack>
       </Flex>
       <Flex flex={1}>
-        <Image alt={"Login Image"} objectFit={"cover"} src={Background} />
+        <Image alt={'Login Image'} objectFit={'cover'} src={Background} />
       </Flex>
     </Flex>
   );
 };
 
 const Mobile = () => {
+  const navigate = useNavigate();
   const { colorMode } = useColorMode();
+  const user = localStorage.getItem('user');
+
+  const handleGetStarted = () => {
+    if (!user) {
+      navigate('/login');
+      navigate(0);
+    } else {
+      navigate('/profile');
+      navigate(0);
+    }
+  };
 
   return (
-    <Flex direction={"column"} mt={10}>
-      <Image alt={"Login Image"} objectFit={"cover"} src={Background} />
+    <Flex direction={'column'} mt={10}>
+      <Image alt={'Login Image'} objectFit={'cover'} src={Background} />
 
-      <Flex p={8} flex={1} justify={"center"}>
-        <Stack spacing={5} w={"full"} maxW={"lg"}>
-          <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+      <Flex p={8} flex={1} justify={'center'}>
+        <Stack spacing={5} w={'full'} maxW={'lg'}>
+          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
             <Highlight
-              query={"Unleash"}
+              query={'Unleash'}
               styles={{
-                fontFamily: "Bungee shade",
+                fontFamily: 'Bungee shade',
                 color:
-                  colorMode === "light"
-                    ? "var(--chakra-colors-gray-600)"
-                    : "var(--chakra-colors-white)",
+                  colorMode === 'light'
+                    ? 'var(--chakra-colors-gray-600)'
+                    : 'var(--chakra-colors-white)',
               }}
             >
               Unleash
             </Highlight>
-            <Text color={"blue.400"}>your creativity!</Text>
+            <Text color={'blue.400'}>your creativity!</Text>
           </Heading>
 
           <Text
-            fontSize={{ base: "sm", md: "md", lg: "lg" }}
-            color={"gray.400"}
-            fontWeight={"bold"}
+            fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
+            color={'gray.400'}
+            fontWeight={'bold'}
           >
-            <Highlight query={["Kapsule"]} styles={{ color: "blue.300" }}>
+            <Highlight query={['Kapsule']} styles={{ color: 'blue.300' }}>
               Create your own Kapsule to show off your own artwork.
             </Highlight>
           </Text>
 
-          <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             <Button
-              rounded={"full"}
-              bg={"blue.400"}
-              color={"white"}
+              rounded={'full'}
+              bg={'blue.400'}
+              color={'white'}
               _hover={{
-                bg: "blue.500",
+                bg: 'blue.500',
               }}
+              onClick={handleGetStarted}
             >
               Get Started
             </Button>
-            <Button rounded={"full"}>How It Works</Button>
           </Stack>
         </Stack>
       </Flex>

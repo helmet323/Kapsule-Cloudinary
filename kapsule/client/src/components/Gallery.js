@@ -10,23 +10,23 @@ import {
   Stack,
   Select,
   Input,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-import { useState, useEffect } from "react";
-import { Favorite } from "@mui/icons-material";
-import { useRetrieveAll } from "../hooks/useRetrieveAll";
-import { useMutation } from "../hooks/useMutation";
+import { useState, useEffect } from 'react';
+import { Favorite } from '@mui/icons-material';
+import { useRetrieveAll } from '../hooks/useRetrieveAll';
+import { useMutation } from '../hooks/useMutation';
 
 const ErrorText = ({ children, ...props }) => (
-  <Text fontSize="lg" color="red.300" {...props}>
+  <Text fontSize='lg' color='red.300' {...props}>
     {children}
   </Text>
 );
 
-const cloud_name = "dn2csumoj";
+const cloud_name = 'dn2csumoj';
 
 const years = [2023, 2022, 2021, 2020, 2019, 2018];
-const sortOptions = ["Most recent", "Most favourited"];
+const sortOptions = ['Most recent', 'Most favourited'];
 
 const Gallery = ({ title, initialSort }) => {
   const {
@@ -35,9 +35,9 @@ const Gallery = ({ title, initialSort }) => {
     error: retrieveErr,
   } = useRetrieveAll();
 
-  const [search, setSearch] = useState("");
-  const [filterTag, setFilterTag] = useState("");
-  const [filterYear, setFilterYear] = useState("");
+  const [search, setSearch] = useState('');
+  const [filterTag, setFilterTag] = useState('');
+  const [filterYear, setFilterYear] = useState('');
   const [sortOption, setSortOption] = useState(initialSort);
   const [filtered, setFiltered] = useState([]);
 
@@ -77,23 +77,23 @@ const Gallery = ({ title, initialSort }) => {
         return { ...obj, date: new Date(obj.date) };
       });
 
-    if (filterTag !== "") {
+    if (filterTag !== '') {
       filtered = filtered?.filter((img) => img.tags.includes(filterTag));
     }
 
-    if (filterYear !== "") {
+    if (filterYear !== '') {
       filtered = filtered?.filter(
         (img) => img.date.getFullYear().toString() === filterYear
       );
     }
 
-    if (sortOption === "Most favourited") {
+    if (sortOption === 'Most favourited') {
       filtered = filtered?.sort((a, b) => b.likes - a.likes);
-    } else if (sortOption === "Most recent") {
+    } else if (sortOption === 'Most recent') {
       filtered = filtered?.sort((a, b) => b.date - a.date);
     }
 
-    if (search !== "") {
+    if (search !== '') {
       filtered = filtered?.filter((img) => img.description.includes(search));
     }
 
@@ -107,50 +107,50 @@ const Gallery = ({ title, initialSort }) => {
 
   const getDate = (date) => {
     var months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     var year = date.getFullYear();
     var month = months[date.getMonth()];
     var dateVal = date.getDate();
 
-    var formattedDate = dateVal + "/" + (date.getMonth() + 1) + "/" + year;
+    var formattedDate = dateVal + '/' + (date.getMonth() + 1) + '/' + year;
     return formattedDate;
   };
 
   return (
-    <Flex mt={6} flexDirection={"column"} mx={2}>
-      <Text textAlign={"left"} fontSize={"4xl"} mb={2}>
+    <Flex mt={6} flexDirection={'column'} mx={2}>
+      <Text textAlign={'left'} fontSize={'4xl'} mb={2}>
         {title}
       </Text>
 
-      <Stack direction={"row"} spacing={4}>
+      <Stack direction={'row'} spacing={4}>
         <Input
-          placeholder="Search image..."
+          placeholder='Search image...'
           onChange={(e) => handleSelect(e, setSearch)}
         ></Input>
         <Select
-          placeholder="Select tags"
+          placeholder='Select tags'
           onChange={(e) => handleSelect(e, setFilterTag)}
         >
           {Object.keys(tags).map((tag) => (
             <option value={tag} key={tag}>
-              {tag + " " + tags[tag]}
+              {tag + ' ' + tags[tag]}
             </option>
           ))}
         </Select>
         <Select
-          placeholder="Select Year"
+          placeholder='Select Year'
           onChange={(e) => handleSelect(e, setFilterYear)}
         >
           {years.map((year) => (
@@ -160,7 +160,7 @@ const Gallery = ({ title, initialSort }) => {
           ))}
         </Select>
         <Select
-          value={initialSort}
+          value={sortOption}
           onChange={(e) => handleSelect(e, setSortOption)}
         >
           {sortOptions.map((opt) => (
@@ -176,33 +176,33 @@ const Gallery = ({ title, initialSort }) => {
 
       {retrieving && (
         <CircularProgress
-          color="gray.600"
-          trackColor="blue.300"
+          color='gray.600'
+          trackColor='blue.300'
           size={7}
           thickness={10}
           isIndeterminate
         />
       )}
       {retrieveErr && (
-        <ErrorText textAlign="left">Failed to load images</ErrorText>
+        <ErrorText textAlign='left'>Failed to load images</ErrorText>
       )}
 
       {!retrieveErr && images?.length === 0 && (
-        <Text textAlign="left" fontSize="lg" color="gray.500">
+        <Text textAlign='left' fontSize='lg' color='gray.500'>
           No images found
         </Text>
       )}
-      <SimpleGrid columns={[4, 5, 6]} spacing={4} mt={4} listStyleType={"none"}>
+      <SimpleGrid columns={[4, 5, 6]} spacing={4} mt={4} listStyleType={'none'}>
         {filtered?.length > 0 &&
           filtered.map((img, index) => (
             <Box key={img.id} p={2}>
-              <AspectRatio w={"auto"} ratio={1}>
-                <Image src={getUrl(img.id)} alt="" objectFit="cover" />
+              <AspectRatio w={'auto'} ratio={1}>
+                <Image src={getUrl(img.id)} alt='' objectFit='cover' />
               </AspectRatio>
               <Stack
-                alignItems={"center"}
-                flexDirection={"row"}
-                pos={"relative"}
+                alignItems={'center'}
+                flexDirection={'row'}
+                pos={'relative'}
               >
                 <Button
                   leftIcon={<Favorite />}
@@ -212,16 +212,17 @@ const Gallery = ({ title, initialSort }) => {
                 </Button>
                 {likesError && <ErrorText>Likes malfunction</ErrorText>}
                 <Text
-                  fontSize={"md"}
+                  sx={{ display: { base: 'none', xl: 'block' } }}
+                  fontSize={'md'}
                   noOfLines={2}
-                  right={"0"}
-                  pos={"absolute"}
+                  right={'0'}
+                  pos={'absolute'}
                 >
                   {getDate(img.date)}
                 </Text>
               </Stack>
 
-              <Text fontSize={"md"} noOfLines={2}>
+              <Text fontSize={'md'} noOfLines={2}>
                 {img.description}
               </Text>
             </Box>
